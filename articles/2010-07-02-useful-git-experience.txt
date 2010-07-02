@@ -1,4 +1,3 @@
-title: Good things about GIT
 author: OSE
 date: 2010/07/02
 
