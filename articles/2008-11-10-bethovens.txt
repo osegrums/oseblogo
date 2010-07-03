@@ -1,0 +1,52 @@
+title: Bethovens
+date: 2008/11/10
+description: Bethovena 5. simfonija uz Linux ar beep
+
+Šis ir mans pirmais bloga ieraksts EVER!!! Vidusskolā atceros, kā rakstīju sacerējumus - tā noteikti nebija patīkamākā pieredze. Jācer, ka kopš tiem senajiem laikiem lietas ir mainījušās un man sanāks labāk nekā uz 4 no 10 iespējamām ballēm (Sveiciens skolotājai Vanadziņai).
+
+Visu pagājušo nedēļas nogali nodarbojos ar to, ka uz sava "serverīša" provēju uzinstalēt <a href="http://www.archlinux.org/">Arch linux</a> distro. Negāja viegli. Pārinstalēt visu nācās kādas 4 reizes noteikti. Biju pat tik meistarīgs, ka vienā reizē dabūju Kernel panic. Rezultāts tomēr ir iepriecinošs, jo pēc beidzamās instalēšanas iterācijas man viss sanāca un man ir strādājošs linux. Jāatzīmē ARO ieguldījums šinī pasākumā, kurš man neliedza noderīgu padomu. Tnx!
+
+Tātad. Linux ir uzinstalēts. Ko tālāk? Bija doma likt uz tā savu blogu. Tomēr pēc īsa ievada paranojiskā servera drošibā sapratu, ka tomēr blogošanu sākšu ar lapu iekš blogger.com. Vēlāk jau skatīsies kā ies, tad jau varbūt pārcelšos uz jailotu apaci ar kādu railsos rakstītu blogu.
+
+Kas ir nākošā lietderīgā lieta ko var darīt ar serveri ar svaigu linux? Pareizi. Jāizdara kaut kas kam tas nemaz nav paredzēts. Tā nu nonācu līdz programmiņai <a href="http://www.archlinux.org/packages/extra/i686/beep/">beep</a>. Tā ir maza linux programmiņa, kura taisa to pīkstienu, kas parasti skan ieslēdzot datoru. Labā lieta ir, ka šis softiņš māk skaņu taisīt dažādās frekvencēs ... mmm ...
+
+Tātad uzdevums ir uzstādīts šāds: ar beep jānospēlē <a href="http://en.wikipedia.org/wiki/Symphony_No._5_%28Beethoven%29">Bethovena 5. simfonijas</a> ievads.
+Notis ir dotas <a href="http://upload.wikimedia.org/wikipedia/commons/6/6f/Beethoven_symphony_5_opening.svg">te</a>.
+<ol><li>problēma - kā no notīm dabūt frekvences? Atbilde - <a href="http://en.wikipedia.org/wiki/Note">wikipedia</a></li><li>problēma - kā dabūt katras nots spēlēšanas ilgumu? Atbilde - <a href="http://cnx.org/content/m10945/latest/">te</a>.</li><li>problēma - ja nošu garumus mēra beatos, cik milisekundes ir viens beats? Atbilde - hvz, nesanāca atrast. Tākā jālieto vecā labā provēšanas metode.
+</li></ol>
+Lūk ar mans "šedevrs" - ne īpaši simpātisks, bet toties strādā ;)
+
+<code>
+#!/bin/bash
+L16=80
+L8=$(($L16 * 2))
+L4=$(($L8 * 2))
+L2=$(($L4 * 2))
+L1=$(($L2 * 2))
+noteG=392
+noteE=329
+noteF=349
+noteD=294
+pause=0.05
+beep -f $noteG -l $L8
+sleep $pause
+beep -f $noteG -l $L8
+sleep $pause
+beep -f $noteG -l $L8
+sleep $pause
+
+beep -f $noteE -l $L2
+sleep $pause
+
+beep -f $noteF -l $L8
+sleep $pause
+beep -f $noteF -l $L8
+sleep $pause
+beep -f $noteF -l $L8
+sleep $pause
+
+beep -f $noteD -l $L1
+</code>
+
+
+Bija vērts visu weekendu instalēt linux-u vaine? :D :D :D
