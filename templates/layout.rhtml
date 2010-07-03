@@ -5,7 +5,15 @@
     <link rel="alternate" type="application/atom+xml" title="<%= title %> - feed" href="/index.xml" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="description" content="<%= @context[:description] || 'Default description' %>" />
-    <title><%= title %></title>
+    <title>
+      <% if @path == 'index' %>
+        OSE Blogo
+      <% elsif @path.split('/').compact.length == 4 %>
+        <%= title %> - OSE Blogo
+      <% else %>
+        <%= @path.capitalize.gsub(/[-]/, ' ') %> - OSE Blogo
+      <% end %>
+    </title>
   </head>
   <body>
     <section>
