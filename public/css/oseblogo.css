@@ -1,0 +1,12 @@
+code.bash {
+  display: block;
+}
+
+ol.numbered li {
+  list-style-type: inherit;
+}
+
+pre.prettyprint {
+  font-size: small;
+  font-family: monospace;
+}

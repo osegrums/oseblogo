@@ -2,7 +2,10 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/oseblogo.css" />
+    <link rel="stylesheet" type="text/css" href="/prettify/prettify.css" />
     <link rel="alternate" type="application/atom+xml" title="<%= title %> - feed" href="/index.xml" />
+    <script type="text/javascript" src="/prettify/prettify.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="description" content="<%= @context[:description] || 'Default description' %>" />
     <title>
@@ -15,7 +18,7 @@
       <% end %>
     </title>
   </head>
-  <body>
+  <body onload="prettyPrint()">
     <section>
       <%= yield %> 
     </section>

@@ -1,0 +1,95 @@
+title: Pidgin with SIPE for M$ Office Communicator
+author: OSE
+date: 2010/07/20
+slug: pidgin-wth-ms-office-communicator
+
+
+<p>
+  Due to corporate requirements for inner organization communication via M$ Office Communicator
+  I have decided to do it via <a href="http://www.pidgin.im/">Pidgin</a> which is popular chat client for Linux
+  with support of huge ammount of protocols.<br/>
+  I will do it on my Lenovo T500 running Arch Linux.
+</p>
+
+<p>
+  For Arch Linux Pidgin is available via packege.
+
+  <pre class="prettyprint lang-sh">
+    $ sudo pacman -S pidgin</pre>
+
+  As far as Pidgin does not support M$ Office Communicator out of the box, we have to add <a href="http://sipe.sourceforge.net/">SIPE plugin</a> for it.
+  This plugin will allow use Pidgin for communicating via M$ Office Communicator server.<br/>
+  Arch Linux has AUR package fir this. <a href="http://aur.archlinux.org/packages.php?ID=16170">Here it is: pidgin-sipe</a>.
+</p>
+
+<p>
+  Here is how I install it:
+
+  <pre class="prettyprint lang-sh">
+    $ mkdir pidgin-sipe && cd pidgin-sipe</pre>
+
+  Due to fact that I don`t know how to get makepkg work through proxy server (http_proxy, ftp_proxy env variables are set) I am doing some steps manually:
+
+  <pre class="prettyprint lang-sh">
+    $ sudo -E pacman -S gmime
+    $ sudo -E pacman -S intltool
+    $ wget http://downloads.sourceforge.net/project/sipe/sipe/pidgin-sipe-1.10.1/pidgin-sipe-1.10.1.tar.bz2
+    $ wget http://aur.archlinux.org/packages/pidgin-sipe/pidgin-sipe/krb5_include.patch</pre>
+
+  When this is done then we can do actual package building and installing:
+
+  <pre class="prettyprint lang-sh">
+    $ makepkg -csi PKGBUILD</pre>
+
+  <b>Installation done.</b>
+</p>
+
+<p>
+  Now I have to create my pidgin Office communicator account.
+
+  <ol class="numbered">
+    <li>
+      Launch Pidgin
+    </li>
+    <li>
+      Accounts -&gt; Manage Accounts
+    </li>
+    <li>
+      Add<br/>
+      <img src="/images/2010.07.20/pidg1.png" />
+    </li>
+    <li>
+      Basic section:
+    </li>
+    <li>
+      Prodocol -&gt; Office Communicator
+    </li>
+    <li>
+      Username: first.lastname@mycorp.com
+    </li>
+    <li>
+      Login: &lt;DOMAIN&gt;\lastnfir
+    </li>
+    <li>
+      Password: Your password in &lt;DOMAIN&gt; <br/>
+      <img src="/images/2010.07.20/pidg2.png" />
+    </li>
+    <li>
+      In "Advanced" section I do nothing and leave Connection type to AUTO.
+    </li>
+    <li>
+      In "Proxy" section I change "Proxy type" to "No proxy". But it depends on your sitution.
+    </li>
+    <li>
+      When account is configured we can confirm by pressing "Add".
+    </li>
+  </ol>
+</p>
+
+<p>
+  Now everything is done and wualaa - I am connected.
+</p>
+
+<p>
+  One more M$ Windows dependecy solved :).
+</p>

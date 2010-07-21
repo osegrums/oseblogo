@@ -1,6 +1,0 @@
-title: useful git experience
-author: OSE
-date: 2010/07/02
-
-
-kas tad te taads buus jaaprovee rakstiit bez garumziimeem
