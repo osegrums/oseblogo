@@ -1,0 +1,124 @@
+title: Hard drive protection for my T500 on Arch Linux
+date: 2009/04/10
+slug: HDD-protection-for-T500-on-arch-linux
+description: Hard drive protection for my T500 on Arch Linux
+
+
+<p>
+  For last two weeks I am tuning my new Lenovo T500.
+  After updating system (new kernel installed) my tp_smapi driver is not loading anymore.
+  I do not know Linux stuff so well now, so I guess reinstalling this tp_smapi kernel module.
+  (Hope I`ll can use this next time I`ll upgrade my kernel :D )
+</p>
+~
+
+<p>
+  So this are resources I used:
+  <ul>
+    <li><a href="http://wiki.archlinux.org/index.php/AUR_User_Guidelines">Reminding how to do AUR stuff in linux</a></li>
+    <li><a href="http://wiki.archlinux.org/index.php/Tp_smapi">Arch tp_smapi Wiki</a></li>
+    <li><a href="http://wiki.archlinux.org/index.php/HDAPS">Arch HDAPS Wiki</a></li>
+  </ul>
+  This is what I did: <br />
+</p>
+
+<p>
+  (Optional?) Update arch linux package DB
+<pre class="prettyprint lang-sh">
+$ sudo pacman -Sy</pre>
+</p>
+
+<p>
+  (Optional?) Recreate ABS structure
+<pre class="prettyprint lang-sh">
+$ abs</pre>
+</p>
+
+<p>
+  Install tp_smapi and hdapsd
+<pre class="prettyprint lang-sh">
+$ mkdir /var/abs/local/tp_smapi
+$ cd /var/abs/local/tp_smapi</pre>
+</p>
+
+<p>
+  Get necessary sources:
+<pre class="prettyprint lang-sh">
+$ wget http://aur.archlinux.org/packages/tp_smapi/tp_smapi/PKGBUILD
+$ wget http://aur.archlinux.org/packages/tp_smapi/tp_smapi/tp_smapi.install
+$ wget http://aur.archlinux.org/packages/tp_smapi/tp_smapi/tp_smapi.patch</pre>
+</p>
+
+<p>
+  Make Arch package <br />
+  [EDITED]
+<pre class="prettyprint lang-sh">
+$ makepkg -s</pre>
+</p>
+
+<p>
+  After successful build we install new package:
+<pre class="prettyprint lang-sh">
+$ sudo pacman -U tp_smapi-0.40-1-i686.pkg.tar.gz</pre>
+</p>
+
+<p>
+  Let`s see if we succeed
+<pre class="prettyprint lang-sh">
+$ sudo modprobe tp_smapi</pre>
+</p>
+
+<p>
+  Yiippiiii ... no error, that`s good news ... let`s see what lsmod says
+<pre class="prettyprint lang-sh">
+$ lsmod | grep smapi
+tp_smapi               21476  0
+thinkpad_ec             5968  1 tp_smapi</pre>
+</p>
+
+<p>
+  This seems OK too
+</p>
+
+<p>
+  I have already installed <a href="http://aur.archlinux.org/packages.php?ID=5401">htapsd</a> app previously.<br />
+  Now I modify /etc/rc.local to include loading of hdaps and battery params
+<pre class="prettyprint lang-sh">
+$ cat /etc/rc.local
+#!/bin/bash
+#
+# /etc/rc.local: Local multi-user startup script.
+#
+insmod /lib/modules/2.6.29-ARCH/extra/hdaps.ko
+/usr/sbin/ose_set_battery_thresholds
+/etc/rc.d/hdapsd start</pre>
+</p>
+
+<p>
+  What is ose_set_battery_thresholds? Here:
+<pre class="prettyprint lang-sh">
+$ cat /usr/sbin/ose_set_battery_thresholds
+#!/bin/bash
+# From http://wiki.archlinux.org/index.php/Tp_smapi
+# set the battery charging thresholds to extend battery lifespan
+echo 40 > /sys/devices/platform/smapi/BAT0/start_charge_thresh
+echo 85 > /sys/devices/platform/smapi/BAT0/stop_charge_thresh</pre>
+</p>
+
+<p>
+  Also as tutorial says I have to add tp_smapi module to rc.conf. Here is how my /etc/rc.conf MODULES line looks:
+<pre class="prettyprint lang-sh">
+MODULES=(e1000e !pcspkr !snd_pcsp snd-mixer-oss snd-pcm-oss snd-hwdep snd-page-alloc snd-pcm snd-timer snd snd-hda-intel soundcore tp_smapi)</pre>
+</p>
+
+<p>
+  Now I do reboot, to see if everything loads OK
+</p>
+
+<p>
+  ....
+</p>
+
+<p>
+  Yeap log says no error about not existing module. Everything seems OK. (clap)
+</p>
