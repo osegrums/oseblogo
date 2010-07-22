@@ -30,18 +30,18 @@ description: Downgrading Ruby on Arch linux
   First I had to make ABS tree <a href="http://wiki.archlinux.org/index.php/ABS">Get Started: Install Packages </a>.<br />
   After that:
 
-  <pre class="prettyprint lang-sh">
-    cd ~
-    mkdir ABS
-    mkdir ruby-1.8.6
-    vim PKGBUILD</pre>
+<pre class="prettyprint lang-sh">
+cd ~
+mkdir ABS
+mkdir ruby-1.8.6
+vim PKGBUILD</pre>
   
   Fill file with example above.<br />
   Next:
 
-  <pre class="prettyprint lang-sh">
-    makepkg
-    sudo pacman -U ruby...</pre>
+<pre class="prettyprint lang-sh">
+makepkg
+sudo pacman -U ruby...</pre>
 </p>
 
 <p>

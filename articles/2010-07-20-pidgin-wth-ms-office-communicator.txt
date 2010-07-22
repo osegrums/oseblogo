@@ -16,8 +16,8 @@ description: Microsoft Office Communicator on Arch linux with Pidgin and SIPE pl
 <p>
   For Arch Linux Pidgin is available via packege.
 
-  <pre class="prettyprint lang-sh">
-    $ sudo pacman -S pidgin</pre>
+<pre class="prettyprint lang-sh">
+$ sudo pacman -S pidgin</pre>
 
   As far as Pidgin does not support M$ Office Communicator out of the box, we have to add <a href="http://sipe.sourceforge.net/">SIPE plugin</a> for it.
   This plugin will allow use Pidgin for communicating via M$ Office Communicator server.<br/>
@@ -27,21 +27,21 @@ description: Microsoft Office Communicator on Arch linux with Pidgin and SIPE pl
 <p>
   Here is how I install it:
 
-  <pre class="prettyprint lang-sh">
-    $ mkdir pidgin-sipe && cd pidgin-sipe</pre>
+<pre class="prettyprint lang-sh">
+$ mkdir pidgin-sipe && cd pidgin-sipe</pre>
 
   Due to fact that I don`t know how to get makepkg work through proxy server (http_proxy, ftp_proxy env variables are set) I am doing some steps manually:
 
-  <pre class="prettyprint lang-sh">
-    $ sudo -E pacman -S gmime
-    $ sudo -E pacman -S intltool
-    $ wget http://downloads.sourceforge.net/project/sipe/sipe/pidgin-sipe-1.10.1/pidgin-sipe-1.10.1.tar.bz2
-    $ wget http://aur.archlinux.org/packages/pidgin-sipe/pidgin-sipe/krb5_include.patch</pre>
+<pre class="prettyprint lang-sh">
+$ sudo -E pacman -S gmime
+$ sudo -E pacman -S intltool
+$ wget http://downloads.sourceforge.net/project/sipe/sipe/pidgin-sipe-1.10.1/pidgin-sipe-1.10.1.tar.bz2
+$ wget http://aur.archlinux.org/packages/pidgin-sipe/pidgin-sipe/krb5_include.patch</pre>
 
   When this is done then we can do actual package building and installing:
 
-  <pre class="prettyprint lang-sh">
-    $ makepkg -csi PKGBUILD</pre>
+<pre class="prettyprint lang-sh">
+$ makepkg -csi PKGBUILD</pre>
 
   <b>Installation done.</b>
 </p>
