@@ -1,0 +1,104 @@
+title: Problems with connecting to mysql from ruby after upgrading mysql 5.0.77 to 5.1.33
+date: 2009/04/15
+slug: problems-with-mysql-upgrade
+description: Problems with connecting to mysql from ruby after upgrading mysql 5.0.77 to 5.1.33
+
+
+<p>
+  I upgraded my Arch linux recently
+<pre class="prettyprint lang-sh">
+$ sudo pacman -Su
+sudo pacman -Sy</pre>
+  Cool ... new MySQL version. But I did not realised what headpain it will give to me :)
+</p>
+~
+
+<p>
+  After upgrade I tried to run my RoR code. But did not succeed. I don`t remember exact error but all turned so I:
+  <ul>
+    <li>Reinstalled gems - no help</li>
+    <li>Downgraded MySQl - no help</li>
+    <li>Reinstalled Ruby - no help</li>
+  </ul>
+</p>
+
+<p>
+  So I decided to do it once more - with *thinking* :D
+</p>
+
+<p>
+  <ul>
+    <li>Installed newest MySQL - 5.1.33</li>
+    <li>Installed my Ruby 1.8.6 version</li>
+    <li>Installed gems - I stuck with mysql gem.</li>
+  </ul>
+  MySQL gem was telling this bug:
+<pre class="prettyprint lang-sh">
+checking for mysql_query() in -lmysqlclient... yes
+checking for mysql_ssl_set()... yes
+checking for mysql.h... no
+checking for mysql/mysql.h... yes
+conftest.c:2:32: error: mysql/mysqld_error.h: No such file or directory
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Provided configuration options:
+        --with-opt-dir
+        --without-opt-dir
+        --with-opt-include
+        --without-opt-include=${opt-dir}/include
+        --with-opt-lib
+        --without-opt-lib=${opt-dir}/lib
+        --with-make-prog
+        --without-make-prog
+        --srcdir=.
+        --curdir
+        --ruby=/usr/bin/ruby
+        --with-mysql-config
+        --without-mysql-config
+        --with-mysql-dir
+        --without-mysql-dir
+        --with-mysql-include
+        --without-mysql-include=${mysql-dir}/include
+        --with-mysql-lib
+        --without-mysql-lib=${mysql-dir}/lib
+        --with-mysqlclientlib
+        --without-mysqlclientlib
+</pre>
+</p>
+
+<p>
+  I looked into /usr/include/mysql and I see that indeed, there is no mysqld_error.h. Google did not helped.
+</p>
+
+<p>
+  But I found solution that helped:
+  I got older version of mysql. I had it cached in /var/cache/pacman/mysql-5.0.77-3-i686.pkg.tar.gz
+  I extraceted this archive and found that it includes mysqld_error.h file. I copied it to /usr/include/mysql.
+  After this I tried to rerun
+<pre class="prettyprint lang-sh">
+$ sudo gem install mysql</pre>
+  And wualaaaa!! I succeed. Gem installation completed :).
+</p>
+
+<p>
+  After that I tried to run make spec tests but still got one error:
+<pre class="prettyprint lang-sh">
+rake spec
+(in /home/meee/rails)
+
+AccessControlTestController requesting json; I am not logged in and Login is required
+/usr/bin/ruby: symbol lookup error: /usr/lib/ruby/site_ruby/1.8/i686-linux/mysql.so: undefined symbol: rb_str_set_len
+rake aborted!
+</pre>
+</p>
+
+<p>
+  Some days ago I found solution for this from google - just remove this file.
+</p>
+
+<p>
+  It helped, now my ruby mysql is again running.
+</p>
