@@ -3,6 +3,7 @@ date: 2008/11/10
 slug: bethovens
 description: Bethovana 5. simfonija uz Arch linux ar beep programmu
 
+
 <p>
   Šis ir mans pirmais bloga ieraksts EVER!!! Vidusskolā atceros, kā rakstīju sacerējumus - tā noteikti nebija patīkamākā pieredze.
   Jācer, ka kopš tiem senajiem laikiem lietas ir mainījušās un man sanāks labāk nekā uz 4 no 10 iespējamām ballēm
@@ -16,6 +17,7 @@ description: Bethovana 5. simfonija uz Arch linux ar beep programmu
   iterācijas man viss sanāca un man ir strādājošs linux. Jāatzīmē ARO ieguldījums šinī pasākumā,
   kurš man neliedza noderīgu padomu. Tnx!
 </p>
+~
 
 <p>
   Tātad. Linux ir uzinstalēts. Ko tālāk? Bija doma likt uz tā savu blogu. Tomēr pēc īsa ievada paranojiskā servera drošibā sapratu,

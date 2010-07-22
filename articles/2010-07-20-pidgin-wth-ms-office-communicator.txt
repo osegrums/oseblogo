@@ -11,6 +11,7 @@ description: Microsoft Office Communicator on Arch linux with Pidgin and SIPE pl
   with support of huge ammount of protocols.<br/>
   I will do it on my Lenovo T500 running Arch Linux.
 </p>
+~
 
 <p>
   For Arch Linux Pidgin is available via packege.
