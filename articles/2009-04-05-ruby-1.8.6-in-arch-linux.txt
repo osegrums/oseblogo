@@ -3,6 +3,7 @@ date: 2009/04/05
 slug: ruby_1.8.6_on_arch
 description: Bethovana 5. simfonija uz Arch linux ar beep programmu
 
+
 <p>
   Arch Linux is nice distro. It tries to use edge releases. But sometimes it is necessary to use some older and more mature versions of software.
 </p>
