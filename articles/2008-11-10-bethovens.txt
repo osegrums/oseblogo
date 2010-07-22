@@ -1,6 +1,7 @@
 title: Bethovena 5. simfonija uz Linux ar beep
 date: 2008/11/10
 slug: bethovens
+description: Bethovana 5. simfonija uz Arch linux ar beep programmu
 
 <p>
   Šis ir mans pirmais bloga ieraksts EVER!!! Vidusskolā atceros, kā rakstīju sacerējumus - tā noteikti nebija patīkamākā pieredze.

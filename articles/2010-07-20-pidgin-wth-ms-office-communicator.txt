@@ -2,6 +2,7 @@ title: Pidgin with SIPE for M$ Office Communicator
 author: OSE
 date: 2010/07/20
 slug: pidgin-wth-ms-office-communicator
+description: Microsoft Office Communicator on Arch linux with Pidgin and SIPE plugin
 
 
 <p>
