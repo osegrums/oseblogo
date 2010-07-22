@@ -1,6 +1,6 @@
 title: Ruby 1.8.6 on Arch Linux
 date: 2009/04/05
-slug: ruby_1.8.6_on_arch
+slug: ruby-1.8.6-in-arch-linux
 description: Downgrading Ruby on Arch linux
 
 
