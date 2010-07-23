@@ -1,4 +1,5 @@
 title: Bethovena 5. simfonija uz Linux ar beep
+author: OSE
 date: 2008/11/10
 slug: bethovens
 description: Bethovana 5. simfonija uz Arch linux ar beep programmu
