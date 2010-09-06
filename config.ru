@@ -2,7 +2,7 @@
 require 'toto'
 
 # Rack config
-use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico', '/prettify'], :root => 'public'
+use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico', '/prettify', '/misc'], :root => 'public'
 use Rack::CommonLogger
 
 if ENV['RACK_ENV'] == 'development'

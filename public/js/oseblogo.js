@@ -8,3 +8,14 @@ _gaq.push(['_trackPageview']);
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+
+function exec(funcName) {
+  if (typeof funcName == 'string' &&
+  eval('typeof ' + funcName) == 'function') {
+    eval(funcName+'()');
+  }
+}
+
+$(document).ready(function() {
+  exec('loadDecathlon2010'); //2010.08.21 MSG Decathlon
+});

@@ -1,0 +1,46 @@
+title: `Salātiņu` decathlon
+author: OSE
+date: 2010/09/03
+slug: msg-decathlon
+description: 2010.08.21 decathlon competition in Murjāņi, Latvia
+
+
+<p>
+  21. augustā (2010) pirmo reizi piedalījos desmitcīņas sacensībās. Bija ļoti interesanti paprovēt savus spēkus vieglatlētikā.
+  Treniņa process bija interesants. Secinājumi ir, ka katrā no desmitcīņas disciplīnām ir savas nianses un ka katras disciplīnas
+  tehnikas prasme var dot krietnu devu pie rezultāta. <br />
+  Rezultāti priekš pirmās reizes nav slikti, bet noteikti ir kur uzlaboties.
+</p>
+~
+
+<script src="/js/jquery-ui-1.8.4.custom.min.js" type="text/javascript"></script>
+<script src="/js/highcharts-2.0.3.js" type="text/javascript"></script>
+<script src="/js/2010.08.decathlon.js" type="text/javascript"></script>
+<p>
+  Sacensības sākās 
+</p>
+
+<div id="event_tabs">
+  <ul>
+    <li><a href="#event1" style="font-size:12px; padding: 0.5em;">100m</a></li>
+    <li><a href="#event2" style="font-size:12px; padding: 0.5em;">Long jump</a></li>
+    <li><a href="#event3" style="font-size:12px; padding: 0.5em;">Shot put</a></li>
+    <li><a href="#event4" style="font-size:12px; padding: 0.5em;">High jump</a></li>
+    <li><a href="#event5" style="font-size:12px; padding: 0.5em;">400m</a></li>
+    <li><a href="#event6" style="font-size:12px; padding: 0.5em;">Hurdles</a></li>
+    <li><a href="#event7" style="font-size:12px; padding: 0.5em;">Discus</a></li>
+    <li><a href="#event8" style="font-size:12px; padding: 0.5em;">Pole vault</a></li>
+    <li><a href="#event9" style="font-size:12px; padding: 0.5em;">Javelin</a></li>
+    <li><a href="#event10" style="font-size:12px; padding: 0.5em;">1500m</a></li>
+  </ul>
+  <div id="event1" class="graph_tab_div" style="padding:0px;"><div id="eventGraph1" class="eventGraph"></div></div>
+  <div id="event2" class="graph_tab_div" style="padding:0px;"><div id="eventGraph2" class="eventGraph"></div></div>
+  <div id="event3" class="graph_tab_div" style="padding:0px;"><div id="eventGraph3" class="eventGraph"></div></div>
+  <div id="event4" class="graph_tab_div" style="padding:0px;"><div id="eventGraph4" class="eventGraph"></div></div>
+  <div id="event5" class="graph_tab_div" style="padding:0px;"><div id="eventGraph5" class="eventGraph"></div></div>
+  <div id="event6" class="graph_tab_div" style="padding:0px;"><div id="eventGraph6" class="eventGraph"></div></div>
+  <div id="event7" class="graph_tab_div" style="padding:0px;"><div id="eventGraph7" class="eventGraph"></div></div>
+  <div id="event8" class="graph_tab_div" style="padding:0px;"><div id="eventGraph8" class="eventGraph"></div></div>
+  <div id="event9" class="graph_tab_div" style="padding:0px;"><div id="eventGraph9" class="eventGraph"></div></div>
+  <div id="event10" class="graph_tab_div" style="padding:0px;"><div id="eventGraph10" class="eventGraph"></div></div>
+</div>

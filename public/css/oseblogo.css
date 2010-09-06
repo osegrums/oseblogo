@@ -10,3 +10,12 @@ pre.prettyprint {
   font-size: small;
   font-family: monospace;
 }
+
+.graph_tab_div {
+  width: 100%; height: 300px; margin-top: 15px;
+}
+
+.eventGraph {
+  width : 710px;
+  height : 300px;
+}
