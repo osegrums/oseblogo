@@ -20,6 +20,8 @@ description: 2010.08.21 decathlon competition in Murjāņi, Latvia
   Sacensības sākās 
 </p>
 
+<div id="results_table_container"></div>
+
 <div id="event_tabs">
   <ul>
     <li><a href="#event1" style="font-size:12px; padding: 0.5em;">100m</a></li>

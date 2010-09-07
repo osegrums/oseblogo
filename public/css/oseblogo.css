@@ -19,3 +19,31 @@ pre.prettyprint {
   width : 710px;
   height : 300px;
 }
+
+.data_table {
+  border: 1px solid;
+  border-collapse:collapse;
+  line-height: 15px;
+  font-family: serif;
+}
+
+.data_table tr th {
+  font-size: 11px;
+  border: 1px solid;
+  padding: 3px;
+  font-weight: bold;
+  background: #DDD;
+}
+
+.data_table tr td {
+  font-size: 11px;
+  border: 1px solid;
+  padding: 3px;
+  text-align: center;
+}
+
+.data_table tr td .pts {
+  font-size: 9px;
+  color: #666;
+}
+

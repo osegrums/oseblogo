@@ -4,16 +4,48 @@ function loadDecathlon2010() {
                           6 : [10,30], 7 : [10,30], 8 : [1,3], 9 : [0,45], 10 : [250,500]};
   $.getJSON('/misc/2010.08.21-10cina.json', function(data) {
     decaJSON = data; //Define globally available JSON obj
-    $("#event_tabs").tabs({
-      selected : 0,
-      select : function(event, ui) {
-        var eventSeq = parseInt(ui.panel.id.replace("event",""));
-        if ($('#eventGraph'+eventSeq).first().children().size() == 0) { //Load content only if there is nothing inside
-          eventResults('eventGraph'+eventSeq, eventSeq, eventGraphRanges[eventSeq]);
-        }
-      }
-    });
+    makeResultTable();
+    initEventGraphTab();
     eventResults('eventGraph1',1, [11.5,14.5]); //Initally load first tab content
+  });
+}
+
+function makeResultTable() {
+  $("#results_table_container").append('<table id="results_table" class="data_table"></table>');
+  $('#results_table').append('<thead><tr></tr></thead>');
+  $('#results_table').append('<tbody></tbody>');
+  $('#results_table thead tr').append('<th>Participant</th>');
+
+  $(decaJSON.events).each(function() {
+    var title = this.title;
+    if (this.type == 'track') {
+      title += '<br/>(sec)';
+    } else {
+      title += '<br/>(m)';
+    }
+
+    $('#results_table thead tr').append('<th>'+title+'</th>');
+  });
+
+  $(decaJSON.results).each(function() {
+    var myTr = '<tr><td>'+this.name+'<br/><span class="pts">(Points)</span></td>';
+    for (var i = 1; i <= 10; i++) {
+      myTr += '<td>'+this['event'+i].result+'<br/><span class="pts">('+this['event'+i].score+')</span></td>';
+    }
+    myTr += '</tr>';
+    $('#results_table tbody').append(myTr);
+  });
+}
+
+function initEventGraphTab() {
+  $("#event_tabs").tabs({
+    selected : 0,
+    select : function(event, ui) {
+      var eventSeq = parseInt(ui.panel.id.replace("event",""));
+      if ($('#eventGraph'+eventSeq).first().children().size() == 0) { //Load content only if there is nothing inside
+        eventResults('eventGraph'+eventSeq, eventSeq, eventGraphRanges[eventSeq]);
+      }
+    }
   });
 }
 
