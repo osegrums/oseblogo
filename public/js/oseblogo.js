@@ -17,5 +17,6 @@ function exec(funcName) {
 }
 
 $(document).ready(function() {
+  prettyPrint();
   exec('loadDecathlon2010'); //2010.08.21 MSG Decathlon
 });

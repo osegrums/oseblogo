@@ -9,6 +9,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script type="text/javascript" src="/prettify/prettify.js"></script>
     <script type="text/javascript" src="/js/oseblogo.js"></script>
+    <script type="text/javascript" src="/js/jquery.tools.overlay.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="description" content="<%= @context[:description] || 'Default description' %>" />
     <title>
@@ -21,7 +22,7 @@
       <% end %>
     </title>
   </head>
-  <body onload="prettyPrint()">
+  <body>
     <section>
       <%= yield %> 
     </section>

@@ -96,7 +96,8 @@
             "result":"377.4",
             "score":"198"
          },
-         "total_score":"3381"
+         "total_score":"3381",
+         "total_place":"5"
       },
       {
          "name":"Lauris L",
@@ -140,7 +141,8 @@
             "result":"330.25",
             "score":"398"
          },
-         "total_score":"4049"
+         "total_score":"4049",
+         "total_place":"1"
       },
       {
          "name":"Guntis Z",
@@ -184,7 +186,8 @@
             "result":"304.06",
             "score":"537"
          },
-         "total_score":"3549"
+         "total_score":"3549",
+         "total_place":"3"
       },
       {
          "name":"Kaspars R",
@@ -228,7 +231,8 @@
             "result":"337.72",
             "score":"362"
          },
-         "total_score":"3288"
+         "total_score":"3288",
+         "total_place":"6"
       },
       {
          "name":"Jānis L",
@@ -272,7 +276,8 @@
             "result":"335.43",
             "score":"373"
          },
-         "total_score":"2353"
+         "total_score":"2353",
+         "total_place":"10"
       },
       {
          "name":"Sandris P",
@@ -316,7 +321,8 @@
             "result":"0",
             "score":"0"
          },
-         "total_score":"2341"
+         "total_score":"2341",
+         "total_place":"11"
       },
       {
          "name":"Gatis J",
@@ -360,7 +366,8 @@
             "result":"325.53",
             "score":"422"
          },
-         "total_score":"4026"
+         "total_score":"4026",
+         "total_place":"2"
       },
       {
          "name":"Mārtiņš M",
@@ -404,7 +411,8 @@
             "result":"308.25",
             "score":"513"
          },
-         "total_score":"3436"
+         "total_score":"3436",
+         "total_place":"4"
       },
       {
          "name":"Artis C",
@@ -448,7 +456,8 @@
             "result":"323.87",
             "score":"430"
          },
-         "total_score":"3132"
+         "total_score":"3132",
+         "total_place":"8"
       },
       {
          "name":"Uldis J",
@@ -492,7 +501,8 @@
             "result":"397.68",
             "score":"131"
          },
-         "total_score":"2417"
+         "total_score":"2417",
+         "total_place":"9"
       },
       {
          "name":"Oskars S",
@@ -536,7 +546,8 @@
             "result":"321.09",
             "score":"444"
          },
-         "total_score":"3136"
+         "total_score":"3136",
+         "total_place":"7"
       },
       {
          "name":"Juris P",
@@ -580,7 +591,8 @@
             "result":"379.81",
             "score":"189"
          },
-         "total_score":"1889"
+         "total_score":"1889",
+         "total_place":"12"
       }
    ]
 }

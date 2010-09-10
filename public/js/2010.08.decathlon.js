@@ -1,17 +1,16 @@
 var decaJSON;
 function loadDecathlon2010() {
-  var eventGraphRanges = {1 : [11.5,14.5], 2 : [3,6], 3 : [5,11], 4 : [1,1.75], 5 : [30,75],
-                          6 : [10,30], 7 : [10,30], 8 : [1,3], 9 : [0,45], 10 : [250,500]};
   $.getJSON('/misc/2010.08.21-10cina.json', function(data) {
     decaJSON = data; //Define globally available JSON obj
     makeResultTable();
+    initCumulativeGraph();
     initEventGraphTab();
     eventResults('eventGraph1',1, [11.5,14.5]); //Initally load first tab content
   });
 }
 
 function makeResultTable() {
-  $("#results_table_container").append('<table id="results_table" class="data_table"></table>');
+  $('#results_table_container').append('<table id="results_table" class="data_table"></table>');
   $('#results_table').append('<thead><tr></tr></thead>');
   $('#results_table').append('<tbody></tbody>');
   $('#results_table thead tr').append('<th>Participant</th>');
@@ -26,19 +25,25 @@ function makeResultTable() {
 
     $('#results_table thead tr').append('<th>'+title+'</th>');
   });
+  $('#results_table thead tr').append('<th>Place<br/>(Total pts)</th>');
 
   $(decaJSON.results).each(function() {
-    var myTr = '<tr><td>'+this.name+'<br/><span class="pts">(Points)</span></td>';
+    var myTr = '<tr><td><b>'+this.name+'</b><br/><span class="pts">(Points)</span></td>';
     for (var i = 1; i <= 10; i++) {
       myTr += '<td>'+this['event'+i].result+'<br/><span class="pts">('+this['event'+i].score+')</span></td>';
     }
+    myTr += '<td class="total_score"><b>'+this.total_place+'</b><br/>('+this.total_score+')</td>'
     myTr += '</tr>';
     $('#results_table tbody').append(myTr);
   });
+
+  $('#results_table tr:even').addClass('even');
 }
 
 function initEventGraphTab() {
-  $("#event_tabs").tabs({
+  var eventGraphRanges = {1 : [11.5,14.5], 2 : [3,6], 3 : [5,11], 4 : [1,1.75], 5 : [30,75],
+                          6 : [10,30], 7 : [10,30], 8 : [1,3], 9 : [0,45], 10 : [250,500]};
+  $('#event_tabs').tabs({
     selected : 0,
     select : function(event, ui) {
       var eventSeq = parseInt(ui.panel.id.replace("event",""));
@@ -65,6 +70,83 @@ function fieldSortFunction(a, b) {
     return -1;
   else
     return b.result - a.result;
+}
+
+function cumulativeSortFunction(a,b) {
+  return b.cummulativeSum - a.cummulativeSum;
+}
+
+function initCumulativeGraph() {
+  var categories = [];
+  $(decaJSON.events).each(function() {
+    categories[categories.length] = this.title;
+  });
+
+  var series = [];
+  $(decaJSON.results).each(function() {
+    var currSerie = {};
+    currSerie.name = this.name;
+    currSerie.data = [];
+    var cummulativeSum = 0;
+    for(var i = 1; i <= 10; i++) {
+      cummulativeSum += parseInt(this['event'+i].score);
+      currSerie.data[currSerie.data.length] = cummulativeSum;
+    }
+    currSerie.cummulativeSum = cummulativeSum;
+    series[series.length] = currSerie;
+  });
+
+  series = series.sort(cumulativeSortFunction);
+
+  new Highcharts.Chart({
+      chart: {
+         renderTo: 'cumulative_graph',
+         defaultSeriesType: 'line',
+         marginRight: 10,
+         marginBottom: 80
+      },
+      title: {
+        text: 'Cummulative sum of points',
+        style: {
+          font: 'normal 22px Verdana, sans-serif'
+        },
+        y: 20
+      },
+      xAxis: {
+        categories:categories,
+        labels: {
+          rotation: -45,
+          align: 'right',
+          style: {
+            font: 'normal 13px Verdana, sans-serif'
+          }
+        }
+      },
+      yAxis: {
+         title: {
+            text: 'Scored points'
+         },
+         min: 200,
+         max: 4100
+
+      },
+      tooltip: {
+         formatter: function() {
+           return '<center><b>'+ this.series.name +'</b><br/>Sum of points after '+
+                  this.x +': '+ this.y +'pts</center>';
+         }
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -430,
+        y: 54,
+        borderWidth: 1
+      },
+      series:series,
+      credits: {enabled: false}
+   });
 }
 
 function eventResults(container, eventNum, resultRange) {
@@ -173,7 +255,7 @@ function eventResults(container, eventNum, resultRange) {
         verticalAlign: 'top',
         x: -150,
         y: 32,
-        layout: "vertical"
+        layout: 'vertical'
       },
       tooltip: {
          formatter: function() {return false}

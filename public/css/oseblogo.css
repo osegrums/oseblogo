@@ -30,20 +30,32 @@ pre.prettyprint {
 .data_table tr th {
   font-size: 11px;
   border: 1px solid;
-  padding: 3px;
+  padding: 2px;
   font-weight: bold;
   background: #DDD;
+}
+
+.total_score {
+  background: #DDD;
+}
+
+.total_score b {
+  font-size: 13px;
 }
 
 .data_table tr td {
   font-size: 11px;
   border: 1px solid;
-  padding: 3px;
+  padding: 1px;
   text-align: center;
 }
 
 .data_table tr td .pts {
   font-size: 9px;
   color: #666;
+}
+
+.even {
+  background-color: #EEE;
 }
 
