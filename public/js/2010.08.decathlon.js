@@ -6,6 +6,22 @@ function loadDecathlon2010() {
     initCumulativeGraph();
     initEventGraphTab();
     eventResults('eventGraph1',1, [11.5,14.5]); //Initally load first tab content
+    initFancyGallery();
+  });
+}
+
+function initFancyGallery() {
+  $("a.deca_photos").fancybox({
+    'modal' : false,
+    'hideOnOverlayClick' : true,
+    'hideOnContentClick' : true,
+    'showCloseButton' : true,
+    'showNavArrows' : true,
+    'transitionIn' : 'elastic',
+    'transitionOut' : 'elastic',
+    'speedIn'   : 400,
+    'speedOut'    : 200,
+    'overlayShow' : false
   });
 }
 
