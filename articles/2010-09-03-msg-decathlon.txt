@@ -7,7 +7,7 @@ description: 2010.08.21 decathlon competition in Murjāņi, Latvia
 
 <p>
   On 21th of august (2010) it was first time I was participating in any track and field competition ever. And why not to start with one
-  of the hardest events - <a href="http://http://en.wikipedia.org/wiki/Decathlon">decathlon</a>? To add some more complexity we
+  of the hardest events - <a href="http://en.wikipedia.org/wiki/Decathlon">decathlon</a>? To add some more complexity we
   did all ten events in one day not in two days (five events per day) as official decathlon rules state.
 </p>
 ~
