@@ -1,4 +1,4 @@
-title: Standalone cucumber environment on Ubuntu 10.04
+title: Standalone Cucumber Test Suite on Ubuntu 10.04
 author: OSE
 date: 2010/11/16
 slug: standalone-cucumber-on-ubuntu
