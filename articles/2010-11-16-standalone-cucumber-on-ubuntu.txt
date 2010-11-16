@@ -14,11 +14,11 @@ So here is step by step instruction of setting this suite up on blank Ubuntu ins
 
 <h4>Cucumber + friends for non-ruby app integration testing</h1>
 <p>
-I will be using this great job from .... https://github.com/thuss/standalone-cucumber
+I will be using <a href="https://github.com/thuss/standalone-cucumber">Standalone Cucumber Test Suite</a>
 Prerequirements:
 <ol class="numbered">
- <li>Ruby 1.8 (www.ruby-lang.org/en/downloads/)</li>
- <li>Ruby Gems (rubygems.org/)</li>
+ <li>Ruby 1.8 (<a href="www.ruby-lang.org/en/downloads">www.ruby-lang.org/en/downloads/</a>)</li>
+ <li>Ruby Gems (<a href="http://rubygems.org">rubygems.org/</a>)</li>
  <li>Bundler</li>
  <li>GIT</li>
 </ol>
@@ -36,7 +36,7 @@ $ sudo apt-get install ruby
 $ ruby -v
 ruby 1.8.7 (2010-01-10 patchlevel 249) [i486-linux]</pre>
 </p>
-<h4>Install Ruby Gems</h4>
+<h4>Install Ruby Gems (not using Ubuntu package)</h4>
 <pre class="prettyprint lang-sh">$ gem -v
 The program 'gem' can be found in the following packages:
  * rubygems1.8
@@ -56,7 +56,7 @@ $ sudo ln -s /usr/bin/gem1.8 /usr/bin/gem
 $ gem -v
 1.3.7
 $</pre>
-I do not why that standart _gem_ executable was not created, but I just made a symlink to gem1.8 .
+I do not know why that standart <i>gem</i> executable was not created, but I just made a symlink to gem1.8 .
 </p>
 <h4>Install Bundler and rake</h4>
 <p>
@@ -114,7 +114,7 @@ cucumber features/search.feature:6 # Scenario: Search for cucumber
 4 steps (1 failed, 1 skipped, 2 passed)
 0m9.747s
 $</pre>
-Since I am using internet from Finland network and Google is so cool to give localized names for search buttons then I will have to tweak default *features/search.feature* a bit.
+Since I am using internet from Finland network and Google is so cool to give localized names for search buttons then I will have to tweak default <b>features/search.feature</b> a bit.
 I have to change
 <pre>When I click the "Search" button</pre>
 to
