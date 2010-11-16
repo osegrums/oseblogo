@@ -1,0 +1,145 @@
+title: Standalone cucumber environment on Ubuntu 10.04
+author: OSE
+date: 2010/11/16
+slug: standalone-cucumber-on-ubuntu
+description: Standalone Cucumber environment on blank Ubuntu 10.04 workstation
+
+<p>I was told that setting up cucumber with selenium is quite messy.
+I know I went through it once but it wasn't so hard at all.
+After some Googling I even found great work by <a href="http://gabrito.com/post/acceptance-testing-non-ruby-apps-with-cucumber">Todd Huss</a> with
+<a href="https://github.com/thuss/standalone-cucumber">Standalone Cucumber Test Suite</a>.<br />
+So here is step by step instruction of setting this suite up on blank Ubuntu installation.
+</p>
+~
+
+<h4>Cucumber + friends for non-ruby app integration testing</h1>
+<p>
+I will be using this great job from .... https://github.com/thuss/standalone-cucumber
+Prerequirements:
+<ol class="numbered">
+ <li>Ruby 1.8 (www.ruby-lang.org/en/downloads/)</li>
+ <li>Ruby Gems (rubygems.org/)</li>
+ <li>Bundler</li>
+ <li>GIT</li>
+</ol>
+I am on blank Ubuntu Linux workstation:
+<pre class="prettyprint lang-sh">$ cat /etc/lsb-release | grep DESCRIPTION
+DISTRIB_DESCRIPTION="Ubuntu 10.04.1 LTS"</pre>
+</p>
+<h4>Install ruby (If you plan to use ruby for other things too, then it is suggested to use RVM):</h4>
+<p>
+<pre class="prettyprint lang-sh">$ ruby -v
+The program 'ruby' is currently not installed.  You can install it by typing:
+sudo apt-get install ruby
+$ sudo apt-get install ruby
+.... blah blah blah ....
+$ ruby -v
+ruby 1.8.7 (2010-01-10 patchlevel 249) [i486-linux]</pre>
+</p>
+<h4>Install Ruby Gems</h4>
+<pre class="prettyprint lang-sh">$ gem -v
+The program 'gem' can be found in the following packages:
+ * rubygems1.8
+ * rubygems1.9.1
+Try: sudo apt-get install &lt;selected package&gt;
+$ wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz
+.... blah blah blah ....
+$ tar -vxf rubygems-1.3.7.tgz
+$ cd rubygems-1.3.7/
+$ sudo ruby setup.rb
+.... blah blah blah ....
+$ gem -v
+bash: /usr/bin/gem: No such file or directory
+$ gem1.8 -v
+1.3.7
+$ sudo ln -s /usr/bin/gem1.8 /usr/bin/gem
+$ gem -v
+1.3.7
+$</pre>
+I do not why that standart _gem_ executable was not created, but I just made a symlink to gem1.8 .
+</p>
+<h4>Install Bundler and rake</h4>
+<p>
+<pre class="prettyprint lang-sh">$ sudo gem install bundler rake
+$ bundle -v
+Bundler version 1.0.5
+$</pre>
+</p>
+<h4>Install GIT</h4>
+<p>
+<pre class="prettyprint lang-sh">$ git -v
+The program 'git' is currently not installed.  You can install it by typing:
+sudo apt-get install git-core
+$ sudo apt-get install git-core
+.... blah blah blah ....
+$ git --version
+git version 1.7.0.4
+$</pre>
+</p>
+<h4>Some pre-work for Nokogiri and Cucumber</h4>
+<p>
+Without these packages nokogiri is not installing
+<pre class="prettyprint lang-sh">$ sudo apt-get install ruby1.8-dev libxml2 libxml2-dev libxslt1-dev
+$ sudo apt-get install libopenssl-ruby</pre>
+</p>
+<h4>Preconfigured standalone cucumber project</h4>
+<p>
+<pre class="prettyprint lang-sh">$ git clone git://github.com/thuss/standalone-cucumber.git
+$ cd standalone-cucumber
+$ sudo bundle install
+.... blah blah blah ....</pre>
+</p>
+<h4>Playing with cucumber and friends</h4>
+<p>
+Let`s try to run our standart automation test - google search :)
+<pre class="prettyprint lang-sh">$ rake features
+Feature: Search
+  In order to find pages on the web
+  As an information seeker
+  I want to be able to search using keywords
+
+  Scenario: Search for cucumber                          # features/search.feature:6
+    Given I am on the home page                          # features/step_definitions/web_steps.rb:1
+    And I have entered "cucumber bdd" into the "q" field # features/step_definitions/web_steps.rb:5
+    When I click the "Search" button                     # features/step_definitions/web_steps.rb:9
+      no button with value or id or text 'Search' found (Capybara::ElementNotFound)
+      ./features/step_definitions/web_steps.rb:10:in `/^I click the "([^"]*)" button$/'
+      features/search.feature:9:in `When I click the "Search" button'
+    Then I should see "Cucumber - Making BDD fun"        # features/step_definitions/web_steps.rb:13
+
+Failing Scenarios:
+cucumber features/search.feature:6 # Scenario: Search for cucumber
+
+1 scenario (1 failed)
+4 steps (1 failed, 1 skipped, 2 passed)
+0m9.747s
+$</pre>
+Since I am using internet from Finland network and Google is so cool to give localized names for search buttons then I will have to tweak default *features/search.feature* a bit.
+I have to change
+<pre>When I click the "Search" button</pre>
+to
+<pre>When I click the "Google-haku" button</pre>
+<br />
+Let`s run test again
+<pre class="prettyprint lang-sh">$ rake features
+(in /home/osegrums/tmp/standalone-cucumber)
+bundle exec /usr/bin/ruby1.8 -I "/usr/lib/ruby/gems/1.8/gems/cucumber-0.9.3/lib:lib" "/usr/lib/ruby/gems/1.8/gems/cucumber-0.9.3/bin/cucumber" --format pretty
+Feature: Search
+  In order to find pages on the web
+  As an information seeker
+  I want to be able to search using keywords
+
+  Scenario: Search for cucumber                          # features/search.feature:6
+    Given I am on the home page                          # features/step_definitions/web_steps.rb:1
+    And I have entered "cucumber bdd" into the "q" field # features/step_definitions/web_steps.rb:5
+    When I click the "Google-haku" button                # features/step_definitions/web_steps.rb:9
+    Then I should see "Cucumber - Making BDD fun"        # features/step_definitions/web_steps.rb:13
+
+1 scenario (1 passed)
+4 steps (4 passed)
+0m4.942s</pre>
+</p>
+<p>
+Wualaaaa ... we have running Cucumber+Selenium automated environment with one working test.
+</p>
+
